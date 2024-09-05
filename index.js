@@ -14,7 +14,7 @@ app.get("/secret", (req, res) => {
 });
 
 app.get("/pipeline", (req, res) => {
-  res.send("pipeline works!");
+  res.send("pipeline works!!");
 });
 
 app.listen(port, () => {
