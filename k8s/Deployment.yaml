@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: k8stutorial-deployment
+  labels:
+    app: k8stutorial
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: k8stutorial
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 0
+      maxUnavailable: 1
+  template:
+    metadata:
+      labels:
+        app: k8stutorial
+    spec:
+      containers:
+        - name: k8stutorial
+          image: azizkale/k8stutorial:latest
+          envFrom:
+            - secretRef:
+                name: my-secret
+          ports:
+            - containerPort: 3000
+          env:
+            - name: PORT
+              value: "3000"
