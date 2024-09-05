@@ -22,6 +22,7 @@ spec:
       containers:
         - name: k8stutorial
           image: azizkale/k8stutorial:latest
+          imagePullPolicy: Always
           envFrom:
             - secretRef:
                 name: my-secret
